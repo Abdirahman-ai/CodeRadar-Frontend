@@ -1,1 +1,27 @@
-<p>contribution-summary works!</p>
+<h2>Contribution Summary for Project {{ projectId }}</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>GitHub Username</th>
+      <th>Commits</th>
+      <th>Lines of Code</th>
+      <th>PRs</th>
+      <th>Issues</th>
+      <th>% Commits</th>
+      <th>% LOC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of summary">
+      <td>{{ c.githubUsername }}</td>
+      <td>{{ c.commits }}</td>
+      <td>{{ c.linesOfCode }}</td>
+      <td>{{ c.pullRequests }}</td>
+      <td>{{ c.issues }}</td>
+      <td>{{ c.commitPercentage | number:'1.0-2' }}%</td>
+      <td>{{ c.locPercentage | number:'1.0-2' }}%</td>
+    </tr>
+  </tbody>
+</table>
+
