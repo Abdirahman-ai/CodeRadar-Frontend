@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContributionService, ContributionSummary } from '../services/contribution.service';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
+import { ContributionPieComponent } from '../charts/contribution-pie/contribution-pie.component';
 
 @Component({
   selector: 'app-contribution-summary',
   standalone: true,
-  imports: [CommonModule], 
+  imports: [CommonModule, ContributionPieComponent], 
   templateUrl: './contribution-summary.component.html',
   styleUrl: './contribution-summary.component.scss'
 })
