@@ -1,1 +1,7 @@
-<p>projects works!</p>
+<h2>Projects</h2>
+<ul>
+  <li *ngFor="let project of projects">
+    <strong>{{ project.name }}</strong> — <a [href]="project.repoUrl" target="_blank">{{ project.repoUrl }}</a>
+  </li>
+</ul>
+
