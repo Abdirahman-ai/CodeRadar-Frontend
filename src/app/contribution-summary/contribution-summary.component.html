@@ -1,4 +1,13 @@
-<h2>Contribution Summary for Project {{ projectId }}</h2>
+<h2>Contribution Summary</h2>
+
+<label for="projectSelector">Select Project:</label>
+<select id="projectSelector" [value]="selectedProjectId" (change)="onProjectChange($event)">
+  <option *ngFor="let p of projects" [value]="p.id">
+    {{ p.name }}
+  </option>
+</select>
+
+<hr />
 
 <table>
   <thead>
@@ -26,3 +35,4 @@
 </table>
 
 <app-contribution-pie [summary]="summary"></app-contribution-pie>
+
