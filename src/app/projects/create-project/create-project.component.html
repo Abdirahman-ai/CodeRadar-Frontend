@@ -1,0 +1,25 @@
+<h2>Create New Project</h2>
+
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Project Name:</label>
+    <input id="name" type="text" formControlName="name" />
+  </div>
+
+  <div>
+    <label for="repoUrl">Repository URL:</label>
+    <input id="repoUrl" type="text" formControlName="repoUrl" />
+  </div>
+
+  <div>
+    <label for="userIds">Assign Users:</label>
+    <select id="userIds" formControlName="userIds" multiple>
+      <option *ngFor="let user of users" [value]="user.id">
+        {{ user.githubUsername }}
+      </option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="projectForm.invalid">Create Project</button>
+</form>
+
