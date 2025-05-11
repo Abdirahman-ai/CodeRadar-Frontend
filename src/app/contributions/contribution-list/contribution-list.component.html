@@ -1,0 +1,25 @@
+<h2>All Contributions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>GitHub Username</th>
+      <th>Project Name</th>
+      <th>Commits</th>
+      <th>Lines of Code</th>
+      <th>Pull Requests</th>
+      <th>Issues</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of contributions">
+      <td>{{ c.user.githubUsername }}</td>
+      <td>{{ c.project.name }}</td>
+      <td>{{ c.commits }}</td>
+      <td>{{ c.linesOfCode }}</td>
+      <td>{{ c.pullRequests }}</td>
+      <td>{{ c.issues }}</td>
+    </tr>
+  </tbody>
+</table>
+

@@ -26,5 +26,9 @@ export class ContributionService {
       `${this.apiUrl}/summary/project/${projectId}`
     );
   }
+
+  getAllContributions(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/all`);
+  }  
 }
 

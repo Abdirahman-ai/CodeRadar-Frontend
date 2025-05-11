@@ -5,6 +5,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ContributionSummaryComponent } from './contribution-summary/contribution-summary.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
 import { CreateUserComponent } from './users/create-user/create-user.component';
+import { ContributionListComponent } from './contributions/contribution-list/contribution-list.component';
 
 export const routes: Routes = [
     { path: '', component: DashboardComponent },
@@ -12,5 +13,6 @@ export const routes: Routes = [
     { path: 'users/new', component: CreateUserComponent },
     { path: 'projects', component: ProjectsComponent },
     { path: 'projects/new', component: CreateProjectComponent },
-    { path: 'summary/:projectId', component: ContributionSummaryComponent }
+    { path: 'summary/:projectId', component: ContributionSummaryComponent },
+    { path: 'contributions', component: ContributionListComponent }
 ];
