@@ -1,0 +1,25 @@
+<div class="form-wrapper">
+    <div>
+      <h2>Create New User</h2>
+  
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="githubUsername">GitHub Username:</label>
+          <input id="githubUsername" type="text" formControlName="githubUsername" />
+        </div>
+  
+        <div>
+          <label for="fullName">Full Name:</label>
+          <input id="fullName" type="text" formControlName="fullName" />
+        </div>
+  
+        <div>
+          <label for="email">Email:</label>
+          <input id="email" type="email" formControlName="email" />
+        </div>
+  
+        <button type="submit" [disabled]="userForm.invalid">Create User</button>
+      </form>
+    </div>
+  </div>
+  
