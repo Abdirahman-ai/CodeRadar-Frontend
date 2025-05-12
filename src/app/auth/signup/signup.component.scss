@@ -36,3 +36,20 @@ button.primary {
 button.primary:hover {
   background-color: #0f172a;
 }
+
+.auth-switch {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+
+  a {
+    margin-left: 0.25rem;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
