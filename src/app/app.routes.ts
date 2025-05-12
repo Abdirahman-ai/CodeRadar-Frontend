@@ -7,9 +7,12 @@ import { CreateProjectComponent } from './projects/create-project/create-project
 import { CreateUserComponent } from './users/create-user/create-user.component';
 import { ContributionListComponent } from './contributions/contribution-list/contribution-list.component';
 import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
+     { path: 'signup', component: SignupComponent },
     { path: '', component: DashboardComponent },
     { path: 'users', component: UsersComponent },
     { path: 'users/new', component: CreateUserComponent },
