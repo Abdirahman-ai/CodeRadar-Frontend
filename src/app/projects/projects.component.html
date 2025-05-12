@@ -1,7 +1,36 @@
-<h2>Projects</h2>
-<ul>
-  <li *ngFor="let project of projects">
-    <strong>{{ project.name }}</strong> — <a [href]="project.repoUrl" target="_blank">{{ project.repoUrl }}</a>
-  </li>
-</ul>
+<div class="dashboard-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">PROJECT NAME</div>
+    <nav>
+      <ul>
+        <li class="active">Dashboard</li>
+        <li>Projects</li>
+        <li>Settings</li>
+      </ul>
+    </nav>
+  </aside>
 
+  <!-- Main content -->
+  <main class="main-content">
+    <header class="top-bar">
+      <div></div>
+      <div class="nav-links">
+        <span>Home</span>
+        <span>Projects</span>
+        <span class="avatar">👤</span>
+      </div>
+    </header>
+
+    <section class="project-list">
+      <h2>Your Projects</h2>
+      <div class="card-container">
+        <div class="project-card" *ngFor="let project of projects">
+          <h3>{{ project.name }}</h3>
+          <p>{{ project.repoUrl }}</p>
+          <a [routerLink]="['/summary', project.id]" class="btn">View Summary</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

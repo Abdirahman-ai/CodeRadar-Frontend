@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService, Project } from '../services/project.service';
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { NgChartsModule } from 'ng2-charts'; 
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [NgFor],
+  imports: [CommonModule, NgFor, RouterModule, NgChartsModule], 
   templateUrl: './projects.component.html',
-  styleUrl: './projects.component.scss'
+  styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
   projects: Project[] = [];

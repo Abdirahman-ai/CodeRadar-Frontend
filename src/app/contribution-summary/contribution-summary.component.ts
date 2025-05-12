@@ -9,7 +9,7 @@ import { NgChartsModule } from 'ng2-charts';
 @Component({
   selector: 'app-contribution-summary',
   standalone: true,
-  imports: [CommonModule, NgFor, NgIf, NgChartsModule],
+  imports: [CommonModule, NgFor, NgChartsModule],
   templateUrl: './contribution-summary.component.html',
   styleUrls: ['./contribution-summary.component.scss']
 })
