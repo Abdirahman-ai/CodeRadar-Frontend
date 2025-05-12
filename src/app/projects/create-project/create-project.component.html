@@ -1,28 +1,17 @@
-<div class="form-wrapper">
-    <div>
-        <h2>Create New Project</h2>
-    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-      <div>
-        <label for="name">Project Name:</label>
-        <input id="name" type="text" formControlName="name" />
-      </div>
+<div class="container">
+    <h2>Create or Join Project</h2>
   
-      <div>
-        <label for="repoUrl">Repository URL:</label>
-        <input id="repoUrl" type="text" formControlName="repoUrl" />
-      </div>
+    <label for="name">Project Name</label>
+    <input id="name" formControlName="name" type="text" />
   
-      <div>
-        <label for="userIds">Assign Users:</label>
-        <select id="userIds" formControlName="userIds" multiple>
-          <option *ngFor="let user of users" [value]="user.id">
-            {{ user.githubUsername }}
-          </option>
-        </select>
-      </div>
+    <label for="repoUrl">Repository URL</label>
+    <input id="repoUrl" formControlName="repoUrl" type="text" />
   
-      <button type="submit" [disabled]="projectForm.invalid">Create Project</button>
-    </form>
-    </div>  
-</div>
+    <label for="userIds">Team Members</label>
+    <select formControlName="userIds" multiple>
+      <option *ngFor="let user of users" [value]="user.id">{{ user.githubUsername }}</option>
+    </select>
+  
+    <button class="primary" [disabled]="projectForm.invalid">Create Project</button>
+  </div>
   

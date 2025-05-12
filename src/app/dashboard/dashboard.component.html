@@ -1,1 +1,9 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+  <h1>Welcome to the Dashboard!</h1>
+
+  <form [formGroup]="dashboardForm" (ngSubmit)="onCreate()">
+    <input type="text" formControlName="projectName" placeholder="Project name" />
+    <button type="submit" class="primary" [disabled]="dashboardForm.invalid">Create Project</button>
+  </form>
+</div>
+  
