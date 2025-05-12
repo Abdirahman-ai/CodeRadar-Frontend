@@ -6,13 +6,15 @@ import { ContributionSummaryComponent } from './contribution-summary/contributio
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
 import { CreateUserComponent } from './users/create-user/create-user.component';
 import { ContributionListComponent } from './contributions/contribution-list/contribution-list.component';
+import { LoginComponent } from './auth/login/login.component';
 
 export const routes: Routes = [
+    { path: 'login', component: LoginComponent },
     { path: '', component: DashboardComponent },
     { path: 'users', component: UsersComponent },
     { path: 'users/new', component: CreateUserComponent },
     { path: 'projects', component: ProjectsComponent },
     { path: 'projects/new', component: CreateProjectComponent },
     { path: 'summary/:projectId', component: ContributionSummaryComponent },
-    { path: 'contributions', component: ContributionListComponent }
+    { path: 'contributions', component: ContributionListComponent },
 ];
