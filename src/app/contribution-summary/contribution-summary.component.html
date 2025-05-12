@@ -1,38 +1,75 @@
-<h2>Contribution Summary</h2>
+<div class="dashboard-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">PROJECT NAME</div>
+    <nav>
+      <ul>
+        <li class="active">Dashboard</li>
+        <li>Overall Statistics</li>
+        <li>Settings</li>
+      </ul>
+    </nav>
+  </aside>
 
-<label for="projectSelector">Select Project:</label>
-<select id="projectSelector" [value]="selectedProjectId" (change)="onProjectChange($event)">
-  <option *ngFor="let p of projects" [value]="p.id">
-    {{ p.name }}
-  </option>
-</select>
+  <!-- Main content -->
+  <main class="main-content">
+    <header class="top-bar">
+      <div></div>
+      <div class="nav-links">
+        <span>Home</span>
+        <span>Projects</span>
+        <span class="avatar">👤</span>
+      </div>
+    </header>
 
-<hr />
+    <section class="summary-section">
+      <h2>Contribution Summary</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>GitHub Username</th>
-      <th>Commits</th>
-      <th>Lines of Code</th>
-      <th>PRs</th>
-      <th>Issues</th>
-      <th>% Commits</th>
-      <th>% LOC</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let c of summary">
-      <td>{{ c.githubUsername }}</td>
-      <td>{{ c.commits }}</td>
-      <td>{{ c.linesOfCode }}</td>
-      <td>{{ c.pullRequests }}</td>
-      <td>{{ c.issues }}</td>
-      <td>{{ c.commitPercentage | number:'1.0-2' }}%</td>
-      <td>{{ c.locPercentage | number:'1.0-2' }}%</td>
-    </tr>
-  </tbody>
-</table>
+      <div class="summary-grid">
+        <div class="charts">
+          <div class="chart-box">
+            <h3>Commit Distribution</h3>
+            <canvas baseChart [data]="commitChart" [type]="chartType"></canvas>
+          </div>
+          <div class="chart-box">
+            <h3>Lines of Code Distribution</h3>
+            <canvas baseChart [data]="locChart" [type]="chartType"></canvas>
+          </div>
+        </div>
 
-<app-contribution-pie [summary]="summary"></app-contribution-pie>
+        <div class="metrics">
+          <div class="metric-card">
+            <div class="value">{{ totalLinesOfCode }}</div>
+            <div class="label">Lines of Code</div>
+          </div>
+          <div class="metric-card">
+            <div class="value">{{ totalCommits }}</div>
+            <div class="label">Commits</div>
+          </div>
+          <div class="metric-card">
+            <div class="value">{{ totalChanges }}</div>
+            <div class="label">Files Changed</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section class="table-section">
+      <h3>Team Member List</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Team Member</th>
+            <th>Contributions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of summary">
+            <td>{{ c.githubUsername }}</td>
+            <td>{{ c.commitPercentage | number: '1.0-2' }}%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>

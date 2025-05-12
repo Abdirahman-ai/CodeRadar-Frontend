@@ -1,6 +1,11 @@
-<h3>Commit Distribution</h3>
-<canvas baseChart [data]="commitChart" [type]="chartType"></canvas>
+<div class="pie-grid">
+  <div class="chart-box">
+    <h3>Commit Distribution</h3>
+    <canvas baseChart [data]="commitChart" [type]="chartType"></canvas>
+  </div>
 
-<h3>Lines of Code Distribution</h3>
-<canvas baseChart [data]="locChart" [type]="chartType"></canvas>
-
+  <div class="chart-box">
+    <h3>Lines of Code Distribution</h3>
+    <canvas baseChart [data]="locChart" [type]="chartType"></canvas>
+  </div>
+</div>
