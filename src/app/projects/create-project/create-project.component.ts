@@ -34,7 +34,7 @@ export class CreateProjectComponent implements OnInit {
 
     this.githubForm = this.fb.group({
       repoUrl: ['', Validators.required],
-      personalAccessToken: ['', Validators.required]
+      personalAccessToken: [''] // no validators
     });
 
     this.userService.getAllUsers().subscribe(users => {
