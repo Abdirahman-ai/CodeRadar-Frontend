@@ -1,7 +1,14 @@
 <div class="container">
   <h2>Create or Join Project</h2>
 
-  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+  <!-- Toggle Mode -->
+  <div class="mode-toggle">
+    <button (click)="mode = 'manual'" [class.active]="mode === 'manual'">Manual</button>
+    <button (click)="mode = 'github'" [class.active]="mode === 'github'">GitHub Import</button>
+  </div>
+
+  <!-- Manual Entry Form -->
+  <form *ngIf="mode === 'manual'" [formGroup]="projectForm" (ngSubmit)="onSubmitManual()">
     <label for="name">Project Name</label>
     <input id="name" formControlName="name" type="text" />
 
@@ -15,6 +22,19 @@
 
     <button class="primary" type="submit" [disabled]="projectForm.invalid">
       Create Project
+    </button>
+  </form>
+
+  <!-- GitHub Import Form -->
+  <form *ngIf="mode === 'github'" [formGroup]="githubForm" (ngSubmit)="onSubmitGitHub()">
+    <label for="githubRepo">GitHub Repo URL</label>
+    <input id="githubRepo" formControlName="repoUrl" type="text" placeholder="https://github.com/username/repo" />
+
+    <label for="token">Personal Access Token</label>
+    <input id="token" formControlName="personalAccessToken" type="password" />
+
+    <button class="primary" type="submit" [disabled]="githubForm.invalid">
+      Import from GitHub
     </button>
   </form>
 </div>

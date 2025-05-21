@@ -14,7 +14,9 @@ import { ProjectService } from '../../services/project.service';
 })
 export class CreateProjectComponent implements OnInit {
   projectForm!: FormGroup;
+  githubForm!: FormGroup;
   users: User[] = [];
+  mode: 'manual' | 'github' = 'manual';
 
   constructor(
     private fb: FormBuilder,
@@ -27,7 +29,12 @@ export class CreateProjectComponent implements OnInit {
     this.projectForm = this.fb.group({
       name: ['', Validators.required],
       repoUrl: ['', Validators.required],
-      userIds: [[]] // multi-select user IDs
+      userIds: [[]]
+    });
+
+    this.githubForm = this.fb.group({
+      repoUrl: ['', Validators.required],
+      personalAccessToken: ['', Validators.required]
     });
 
     this.userService.getAllUsers().subscribe(users => {
@@ -35,7 +42,7 @@ export class CreateProjectComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {
+  onSubmitManual(): void {
     if (this.projectForm.invalid) return;
 
     const { name, repoUrl, userIds } = this.projectForm.value;
@@ -49,6 +56,16 @@ export class CreateProjectComponent implements OnInit {
     }));
 
     this.projectService.createProject({ name, repoUrl, contributions }).subscribe(project => {
+      this.router.navigate(['/summary', project.id]);
+    });
+  }
+
+  onSubmitGitHub(): void {
+    if (this.githubForm.invalid) return;
+
+    const { repoUrl, personalAccessToken } = this.githubForm.value;
+
+    this.projectService.importFromGitHub({ repoUrl, personalAccessToken }).subscribe(project => {
       this.router.navigate(['/summary', project.id]);
     });
   }

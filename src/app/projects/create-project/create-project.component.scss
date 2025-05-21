@@ -39,5 +39,35 @@
     background-color: #ccc;
     cursor: not-allowed;
   }
+
+  .mode-toggle {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #e2e8f0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 500;
+  }
+
+  .active {
+    background-color: #3b82f6;
+    color: rgb(243, 238, 238);
+  }
+}
+
+button:not([disabled]):hover {
+  background-color: #1565c0;
+}
+
+button {
+  transition: background-color 0.2s ease;
+}
+
+
   
   
