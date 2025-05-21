@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +14,10 @@ import { RouterModule } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient 
+    private http: HttpClient,
+    private router: Router 
   ) {}
 
   ngOnInit(): void {
@@ -28,13 +28,14 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(): void {
-    this.http.post('/api/auth/login', this.loginForm.value).subscribe({
-    next: (res: any) => {
-      alert(res.message);
-    },
-    error: err => {
-      alert('Login failed: ' + err.error.message);
-    }
-  });
+    this.http.post('http://localhost:8080/api/auth/login', this.loginForm.value).subscribe({
+      next: (res: any) => {
+        alert(res.message);
+        this.router.navigate(['/projects']);
+      },
+      error: err => {
+        alert('Login failed: ' + err.error.message);
+      }
+    });
   }
 }

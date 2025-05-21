@@ -25,12 +25,13 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.fb.group({
       githubUsername: ['', Validators.required],
       fullName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required] //
     });
   }
 
   onSignup(): void {
-    this.http.post('/api/users', this.signupForm.value).subscribe({
+    this.http.post('http://localhost:8080/api/auth/signup', this.signupForm.value).subscribe({
       next: () => {
         alert('Account created!');
         this.router.navigate(['/login']);
