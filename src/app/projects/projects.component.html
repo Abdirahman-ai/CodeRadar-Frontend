@@ -23,7 +23,11 @@
     </header>
 
     <section class="project-list">
-      <h2>Your Projects</h2>
+      <div class="projects-header">
+        <h2>Your Projects</h2>
+        <button class="create-btn" (click)="onCreateProject()">+ New Project</button>
+      </div>
+
       <div class="card-container">
         <div class="project-card" *ngFor="let project of projects">
           <h3>{{ project.name }}</h3>

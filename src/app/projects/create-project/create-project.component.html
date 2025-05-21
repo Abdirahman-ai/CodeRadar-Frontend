@@ -1,17 +1,20 @@
 <div class="container">
-    <h2>Create or Join Project</h2>
-  
+  <h2>Create or Join Project</h2>
+
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
     <label for="name">Project Name</label>
     <input id="name" formControlName="name" type="text" />
-  
+
     <label for="repoUrl">Repository URL</label>
     <input id="repoUrl" formControlName="repoUrl" type="text" />
-  
+
     <label for="userIds">Team Members</label>
     <select formControlName="userIds" multiple>
       <option *ngFor="let user of users" [value]="user.id">{{ user.githubUsername }}</option>
     </select>
-  
-    <button class="primary" [disabled]="projectForm.invalid">Create Project</button>
-  </div>
-  
+
+    <button class="primary" type="submit" [disabled]="projectForm.invalid">
+      Create Project
+    </button>
+  </form>
+</div>

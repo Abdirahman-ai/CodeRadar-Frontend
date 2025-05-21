@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService, Project } from '../services/project.service';
 import { CommonModule, NgFor } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NgChartsModule } from 'ng2-charts'; 
+import { NgChartsModule } from 'ng2-charts';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -14,11 +15,17 @@ import { NgChartsModule } from 'ng2-charts';
 export class ProjectsComponent implements OnInit {
   projects: Project[] = [];
 
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService, private router: Router) {}
+
 
   ngOnInit(): void {
     this.projectService.getAllProjects().subscribe((data) => {
       this.projects = data;
     });
+  }
+
+  onCreateProject(): void {
+   
+    this.router.navigate(['/projects/new']);
   }
 }
