@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeComponent } from './homepage/homepage.component';
 import { UsersComponent } from './users/users.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ContributionSummaryComponent } from './contribution-summary/contribution-summary.component';
@@ -11,9 +11,9 @@ import { SignupComponent } from './auth/signup/signup.component';
 
 
 export const routes: Routes = [
+    { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
-    { path: '', component: DashboardComponent },
     { path: 'users', component: UsersComponent },
     { path: 'users/new', component: CreateUserComponent },
     { path: 'projects', component: ProjectsComponent },
