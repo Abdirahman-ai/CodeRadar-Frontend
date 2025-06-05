@@ -4,9 +4,10 @@
     <div class="logo">PROJECT NAME</div>
     <nav>
       <ul>
-        <li class="active">Dashboard</li>
-        <li>Projects</li>
-        <li>Settings</li>
+        <!-- Updated to use routerLink -->
+        <li routerLink="/" routerLinkActive="active">Dashboard</li>
+        <li routerLink="/projects" routerLinkActive="active">Projects</li>
+        <li routerLink="/settings" routerLinkActive="active">Settings</li> <!-- Only works if you create this route -->
       </ul>
     </nav>
   </aside>
@@ -16,8 +17,9 @@
     <header class="top-bar">
       <div></div>
       <div class="nav-links">
-        <span>Home</span>
-        <span>Projects</span>
+        <!-- Updated to use routerLink -->
+        <span routerLink="/" routerLinkActive="active">Home</span>
+        <span routerLink="/projects" routerLinkActive="active">Projects</span>
         <span class="avatar">👤</span>
       </div>
     </header>

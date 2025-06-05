@@ -6,10 +6,11 @@
   body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background-color: #f9f9f9;
-    color: #222;
+    background-color: #f8fafc; // More modern and visible than #f9f9f9
+    color: #1e293b; // Dark slate blue for consistency
+    min-height: 100vh;
   }
-  
+
   h2, h3, h4 {
     font-weight: 600;
     margin-bottom: 1rem;
