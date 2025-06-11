@@ -11,5 +11,9 @@
     <div class="auth-switch">
       Already have an account? <a routerLink="/login">Log in</a>
     </div>
+
+    <!-- Feedback messages directly under the form box -->
+    <div *ngIf="successMessage" class="inline-success">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="inline-error">{{ errorMessage }}</div>
   </div>
 </div>

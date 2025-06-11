@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -14,6 +13,8 @@ import { RouterModule } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
+  successMessage: string = '';
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -26,18 +27,22 @@ export class SignupComponent implements OnInit {
       githubUsername: ['', Validators.required],
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required] //
+      password: ['', Validators.required]
     });
   }
 
   onSignup(): void {
+    this.successMessage = '';
+    this.errorMessage = '';
+    
     this.http.post('http://localhost:8080/api/auth/signup', this.signupForm.value).subscribe({
       next: () => {
-        alert('Account created!');
-        this.router.navigate(['/login']);
+        this.successMessage = 'Account created successfully!';
+        this.signupForm.reset();
+        setTimeout(() => this.router.navigate(['/login']), 1500);
       },
       error: err => {
-        alert('Signup failed: ' + err.error.message);
+        this.errorMessage = 'Signup failed: ' + (err.error?.message || 'Something went wrong.');
       }
     });
   }
