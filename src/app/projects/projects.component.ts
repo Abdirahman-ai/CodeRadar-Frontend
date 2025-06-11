@@ -17,7 +17,6 @@ export class ProjectsComponent implements OnInit {
 
   constructor(private projectService: ProjectService, private router: Router) {}
 
-
   ngOnInit(): void {
     this.projectService.getAllProjects().subscribe((data) => {
       this.projects = data;
@@ -25,7 +24,15 @@ export class ProjectsComponent implements OnInit {
   }
 
   onCreateProject(): void {
-   
     this.router.navigate(['/projects/new']);
+  }
+
+  onLogout(): void {
+    // Clear stored auth/session data if any
+    sessionStorage.clear();
+    localStorage.clear();
+
+    // Redirect to login
+    this.router.navigate(['/login']);
   }
 }
