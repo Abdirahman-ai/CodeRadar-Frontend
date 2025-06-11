@@ -13,6 +13,8 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  successMessage: string = '';
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -28,13 +30,17 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(): void {
+    this.successMessage = '';
+    this.errorMessage = '';
+
     this.http.post('http://localhost:8080/api/auth/login', this.loginForm.value).subscribe({
-      next: (res: any) => {
-        alert(res.message);
-        this.router.navigate(['/projects']);
+    next: () => {
+        this.successMessage = 'Login successful!';
+        // this.loginForm.reset(); // sets the email and password textbox to blank
+        setTimeout(() => this.router.navigate(['/projects']), 1500);
       },
-      error: err => {
-        alert('Login failed: ' + err.error.message);
+         error: err => {
+        this.errorMessage = 'Login failed: ' + (err.error?.message || 'Invalid credentials');
       }
     });
   }

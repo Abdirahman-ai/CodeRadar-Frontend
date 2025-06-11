@@ -12,9 +12,12 @@
       <button type="submit" [disabled]="loginForm.invalid">Login</button>
     </form>
 
+    <!-- Success and Error Messages -->
+    <div class="inline-success" *ngIf="successMessage">{{ successMessage }}</div>
+    <div class="inline-error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
     <p style="text-align: center; margin-top: 1rem;">
       Don't have an account? <a routerLink="/signup">Sign up</a>
     </p>
   </div>
 </div>
-
